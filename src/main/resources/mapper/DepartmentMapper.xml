@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DepartmentDao">
+    <resultMap type="pojo.Department" id="departmentResultMap">
+        <id property="id" column="id"/>
+        <result property="rownum" column="rownum"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="avgSalary" column="avgSalary"/>
+        <result property="maxWage" column="maxWage"/>
+        <result property="minWage" column="minWage"/>
+        <result property="totalPeople" column="totalPeople"/>
+        <result property="totalSalary" column="totalSalary"/>
+    </resultMap>
+
+    <select id="getDepartmentList" resultType="pojo.Department">
+        select @rownum:=@rownum+1 as rownum, id, name, address
+        from department, (select @rownum:=0) t
+        where id != 0
+    </select>
+
+    <select id="getDepartmentNameList" resultType="pojo.Department">
+        select id, name
+        from department
+    </select>
+
+    <select id="getDeptInfo" resultType="pojo.Department" parameterType="int">
+        select
+          d.id as id, d.name as name, d.address as address,
+          count(e.id) as totalPeople,
+          sum(e.sal) as totalSalary,
+          avg(e.sal) as avgSalary,
+          max(e.sal) as maxWage,
+          min(e.sal) as minWage
+        from department as d, employee as e
+        where d.id = #{id} and e.deptno = #{id}
+    </select>
+</mapper>
