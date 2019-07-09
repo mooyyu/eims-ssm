@@ -38,7 +38,7 @@
             <p class="text-center text-white-50" style="font-size: small;">当前管理员:${cookie.name.value}<br><a href="./exitLogin" class="badge badge-pill badge-light">退出</a></p>
         </div>
         <div class="pr-2">
-            <%--<jsp:include page="/WEB-INF/components/aside.jsp"></jsp:include>--%>
+            <jsp:include page="/WEB-INF/components/aside.jsp"></jsp:include>
         </div>
         <hr class="my-3">
         <div class="text-center my-3 w-100">
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="col-10 p-5" style="overflow-y: auto; height: 100vh;">
-        <%--<c:set var="aside" value="${empty param.aside ? 'default' : param.aside}"></c:set>--%>
+        <c:set var="aside" value="${empty param.aside ? 'default' : param.aside}"></c:set>
         <c:choose>
             <c:when test="${aside.equals('employeeList')}">
                 <%--<jsp:include page="/admin/getEmployeeList"></jsp:include>--%>
@@ -54,14 +54,18 @@
             <c:when test="${aside.equals('employeeInfo')}">
                 <%--<jsp:include page="/admin/getEmployeeInfo"></jsp:include>--%>
             </c:when>
+            <c:when test="${aside.equals('departmentList')}">
+                <jsp:include page="/department/list"></jsp:include>
+            </c:when>
+            <c:when test="${aside.equals('departmentInfo')}">
+                <jsp:include page="/department/info"></jsp:include>
+            </c:when>
             <c:when test="${aside.equals('default') ||
-                            aside.equals('addEmployee') ||
-                            aside.equals('departmentInfo') ||
-                            aside.equals('departmentList')}">
-                <%--<jsp:include page="/WEB-INF/components/${aside}.jsp"></jsp:include>--%>
+                            aside.equals('addEmployee')}">
+                <jsp:include page="/WEB-INF/components/${aside}.jsp"></jsp:include>
             </c:when>
             <c:otherwise>
-                <%--<c:redirect url="/admin/index.jsp"></c:redirect>--%>
+                <jsp:include page="/WEB-INF/components/default.jsp"></jsp:include>
             </c:otherwise>
         </c:choose>
     </div>

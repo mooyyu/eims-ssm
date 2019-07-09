@@ -45,7 +45,7 @@
                 <div class="input-group-prepend">
                     <img src="./api/getVCode" alt="vcode">
                 </div>
-                <input v-model:value="vcode" type="text" class="form-control" placeholder="请输入验证码.区分大小写!">
+                <input v-on:keyup.enter="submit" v-model:value="vcode" type="text" class="form-control" placeholder="请输入验证码.区分大小写!">
                 <div class="input-group-prepend">
                     <button class="btn bg-danger" type="button" v-on:click="submit">Submit</button>
                 </div>
