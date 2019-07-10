@@ -20,11 +20,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> getDepartmentNameList() {
-        return departmentDao.getDepartmentNameList();
-    }
-
-    @Override
     public Department getDeptInfo(int id) {
         return departmentDao.getDeptInfo(id);
     }

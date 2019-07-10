@@ -37,4 +37,9 @@
         from department as d, employee as e
         where d.id = #{id} and e.deptno = #{id}
     </select>
+
+    <select id="countDepartments" resultType="java.lang.Integer">
+        select count(*)
+        from department
+    </select>
 </mapper>

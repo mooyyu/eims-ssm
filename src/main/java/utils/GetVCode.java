@@ -1,6 +1,4 @@
-package api;
-
-import utils.VCodeGenerator;
+package utils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -16,7 +14,7 @@ import java.io.IOException;
  * link: https://www.cnblogs.com/chiangchou/p/VCodeGenerator.html
  */
 @WebServlet(name = "getVCode", urlPatterns = "/api/getVCode")
-public class GetVCodeServlet extends HttpServlet {
+public class GetVCode extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //验证码不能缓存

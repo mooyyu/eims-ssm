@@ -34,11 +34,13 @@ var checkIMG = function(o) {
 
 var submitIMG = function() {
     if (imgFile != null) {
-        axios.post('/admin/uploadAvatar', {
+        axios.post('./employee/uploadAvatar', {
             id: curEmployeeId,
             avatar: new_src
         }).then(function(res) {
-            window.location.reload();
+            if (res.data == "ok") {
+                window.location.reload();
+            }
         }).catch(function(error) {
             console.info(error);
         })

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.EmployeeDao">
+    <resultMap type="pojo.Employee" id="employeeResultMap">
+        <id property="id" column="id"/>
+        <result property="rownum" column="rownum"/>
+        <result property="name" column="name"/>
+        <result property="comm" column="comm"/>
+        <result property="sal" column="sal"/>
+        <result property="deptName" column="deptName"/>
+        <result property="deptno" column="deptno"/>
+        <result property="hiredate" column="hiredate"/>
+        <result property="hiredateStr" column="hiredateStr"/>
+        <result property="job" column="job"/>
+        <result property="mgr" column="mgr"/>
+        <result property="mgrName" column="mgrName"/>
+    </resultMap>
+    <insert id="addEmployee" parameterType="Employee">
+        insert into employee(name ,job, hiredate, sal, comm, mgr, deptno)
+        values(
+          #{name}, #{job}, #{hiredateStr}, #{sal}, #{comm}, #{mgr}, #{deptno}
+        )
+    </insert>
+
+    <update id="updateEmployee"></update>
+
+    <update id="updateAvatar">
+        update employee
+        set avatar=#{avatar}
+        where id=${id}
+    </update>
+
+    <delete id="deleteEmployee"></delete>
+    <delete id="deleteAllQuery"></delete>
+
+    <select id="queryEmployee" resultType="pojo.Employee" parameterType="string">
+        select @rownum:=@rownum+1 as rownum, x.*
+        from (
+          select employee.id as id, employee.name as name, job, date_format(hiredate, '%Y-%m-%d') as hiredateStr, sal, comm, mgr, deptno, manager.name as mgrName, department.name as deptName
+          from employee
+            join manager on mgr=manager.id
+            join department on deptno=department.id
+          where ${gcs}
+          order by hiredate desc limit 9999
+        ) x, (
+          select @rownum:=0
+        ) t
+    </select>
+
+    <select id="getEmployee" resultType="pojo.Employee" parameterType="int">
+        select id, name, job, date_format(hiredate, '%Y-%m-%d') as hiredateStr, sal, comm, mgr, deptno
+        from employee
+        where id= #{id}
+    </select>
+
+    <select id="getAvatar" resultType="java.lang.String" parameterType="int">
+        select avatar
+        from employee
+        where id=#{id}
+    </select>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(id)
+        from employee
+    </select>
+
+    <select id="countEmployees" resultType="java.lang.Integer">
+        select count(*)
+        from employee
+    </select>
+
+    <select id="getSalSum" resultType="java.lang.Integer">
+        select sum(sal)
+        from employee
+    </select>
+</mapper>

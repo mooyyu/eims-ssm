@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./resources/css/bootstrap.css">
 
-    <title></title>
+    <title>雇员信息管理系统</title>
 </head>
 <body style="min-height: 100vh; min-width: 1100px; position: relative;">
 <!-- Optional JavaScript -->
@@ -49,10 +49,10 @@
         <c:set var="aside" value="${empty param.aside ? 'default' : param.aside}"></c:set>
         <c:choose>
             <c:when test="${aside.equals('employeeList')}">
-                <%--<jsp:include page="/admin/getEmployeeList"></jsp:include>--%>
+                <jsp:include page="/employee/query"></jsp:include>
             </c:when>
             <c:when test="${aside.equals('employeeInfo')}">
-                <%--<jsp:include page="/admin/getEmployeeInfo"></jsp:include>--%>
+                <jsp:include page="/employee/edit"></jsp:include>
             </c:when>
             <c:when test="${aside.equals('departmentList')}">
                 <jsp:include page="/department/list"></jsp:include>
@@ -60,12 +60,11 @@
             <c:when test="${aside.equals('departmentInfo')}">
                 <jsp:include page="/department/info"></jsp:include>
             </c:when>
-            <c:when test="${aside.equals('default') ||
-                            aside.equals('addEmployee')}">
-                <jsp:include page="/WEB-INF/components/${aside}.jsp"></jsp:include>
+            <c:when test="${aside.equals('addEmployee')}">
+                <jsp:include page="/employee/add"></jsp:include>
             </c:when>
             <c:otherwise>
-                <jsp:include page="/WEB-INF/components/default.jsp"></jsp:include>
+                <jsp:include page="/overview"></jsp:include>
             </c:otherwise>
         </c:choose>
     </div>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.SuperuserService;
+import service.UtilsService;
 import utils.CookieUtil;
 import utils.Md5;
 
@@ -20,6 +21,8 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
     @Autowired
     private SuperuserService superuserService;
+    @Autowired
+    private UtilsService utilsService;
 
     public static class LoginBody {
         private String name;
@@ -77,6 +80,12 @@ public class LoginController extends HttpServlet {
     @RequestMapping(value = "/admin", method = {RequestMethod.GET})
     public String mainPage() {
         return "admin/index";
+    }
+
+    @RequestMapping("overview")
+    public String overView(HttpServletRequest request) {
+        utilsService.overView(request);
+        return "components/default";
     }
 
     @RequestMapping(value = "/exitLogin", method = {RequestMethod.GET})

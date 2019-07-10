@@ -4,7 +4,12 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/EmployeeInfo.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/addEmployee.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/departmentInfo.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/employeeList.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/filterForm.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/pagination.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>

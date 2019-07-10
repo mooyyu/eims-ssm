@@ -7,9 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ page import="Dao.EIMSDao" %>--%>
-
-<%--<c:set var="eims" value="<%=new EIMSDao().getEIMS()%>"></c:set>--%>
 
 <style>
     @font-face {
@@ -43,9 +40,9 @@
 <div id="main_show" class="text-center text-white py-5 rounded">
     <h1 class="display-1 mt-5" data-text="E I M S">E I M S</h1><br>
     <hr>
-    <%--<h1 data-text="The number of departments is ${eims.departments}">The number of departments is ${eims.departments}</h1><br>--%>
-    <%--<h1 data-text="We have ${eims.leaders} leaders">We have ${eims.leaders} leaders</h1><br>--%>
-    <%--<h1 data-text="Total amount of wages up to ${eims.wages} RMB">Total amount of wages up to ${eims.wages} RMB</h1><br>--%>
-    <%--<h1 data-text="A total of ${eims.employees} employees">A total of ${eims.employees} employees</h1>--%>
+    <h1 data-text="The number of departments is ${eims.departments}">The number of departments is ${eims.departments}</h1><br>
+    <h1 data-text="We have ${eims.managers} leaders">We have ${eims.managers} leaders</h1><br>
+    <h1 data-text="All of wages is ${eims.salSum}">All of wages is ${eims.salSum}</h1><br>
+    <h1 data-text="Total of ${eims.employees} employees">Total of ${eims.employees} employees</h1>
     <hr>
 </div>

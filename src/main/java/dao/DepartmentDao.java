@@ -9,4 +9,6 @@ public interface DepartmentDao {
     List<Department> getDepartmentNameList();
 
     Department getDeptInfo(int id);
+
+    int countDepartments();
 }
