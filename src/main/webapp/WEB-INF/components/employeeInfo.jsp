@@ -15,7 +15,7 @@
                 <a class="navbar-brand">编辑雇员</a>
             </div>
         </nav>
-        <form id="filter" class="border border-dark p-4" method="post" action="/admin/updateEmployee">
+        <form id="filter" class="border border-dark p-4" method="post" action="./employee/update">
             <input class="d-none" type="hidden" name="id" value="${curEmployee.id}">
             <div class="form-row">
                 <div class="form-group col-md-6">

@@ -3,6 +3,7 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pojo.CurQuery;
 import service.EmployeeService;
 import service.UtilsService;
 
@@ -58,19 +59,24 @@ public class EmployeeController {
         return "components/employeeList";
     }
 
-    @RequestMapping("delete")
-    public String doDelete() {
-        return "";
+    @RequestMapping(value = "delete", method = {RequestMethod.GET})
+    @ResponseBody
+    public String doDelete(@RequestParam int id) {
+        employeeService.deleteEmployee(id);
+        return "ok";
     }
 
-    @RequestMapping("deleteAll")
-    public String doDeleteQuery() {
-        return "";
+    @RequestMapping(value = "delete", method = {RequestMethod.POST})
+    @ResponseBody
+    public String doDeleteQuery(@RequestBody CurQuery cq) {
+        employeeService.deleteAllQuery(cq);
+        return "ok";
     }
 
     @RequestMapping("update")
-    public String update() {
-        return "";
+    public String update(HttpServletRequest request) {
+        employeeService.updateEmployee(request);
+        return "redirect:/admin?aside=employeeInfo&id=" + request.getParameter("id");
     }
 
     @RequestMapping("uploadAvatar")

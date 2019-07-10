@@ -71,8 +71,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public int updateEmployee(Employee e) {
-        return employeeDao.updateEmployee(e);
+    public void updateEmployee(HttpServletRequest request) {
+        employeeDao.updateEmployee(new Employee(
+                Integer.valueOf(request.getParameter("id")),
+                request.getParameter("name"),
+                request.getParameter("job"),
+                request.getParameter("hiredateStr"),
+                Integer.valueOf(request.getParameter("sal")),
+                Double.valueOf(request.getParameter("comm")),
+                Integer.valueOf(request.getParameter("mgr")),
+                Integer.valueOf(request.getParameter("dept"))
+        ));
     }
 
     @Override
@@ -81,17 +90,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public String getAvatar(int id) {
-        return employeeDao.getAvatar(id);
-    }
-
-    @Override
     public void deleteEmployee(int id) {
         employeeDao.deleteEmployee(id);
     }
 
     @Override
-    public void deleteAllQuery(String gcs) {
-        employeeDao.deleteAllQuery(gcs);
+    public void deleteAllQuery(CurQuery cq) {
+        employeeDao.deleteAllQuery(new GenerateConditionalStmt().getGcs(cq));
     }
 }

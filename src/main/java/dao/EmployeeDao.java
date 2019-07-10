@@ -22,7 +22,7 @@ public interface EmployeeDao {
 
     void deleteEmployee(int id);
 
-    void deleteAllQuery(String gcs);
+    void deleteAllQuery(@Param("gcs") String gcs);
 
     int countEmployees();
 

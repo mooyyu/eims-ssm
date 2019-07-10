@@ -9,6 +9,7 @@ public class CurQuery {
     public String mgr;
     public String dept;
 
+    public CurQuery() {}
     public CurQuery(String name, String job, String sal, String comm, String hiredateStr, String mgr, String dept) {
         this.name = name;
         this.job = job;

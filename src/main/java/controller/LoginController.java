@@ -82,7 +82,7 @@ public class LoginController extends HttpServlet {
         return "admin/index";
     }
 
-    @RequestMapping("overview")
+    @RequestMapping("/overview")
     public String overView(HttpServletRequest request) {
         utilsService.overView(request);
         return "components/default";

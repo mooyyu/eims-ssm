@@ -106,12 +106,12 @@
             },
             doDelete: function() {
                 if (this.curBTN == "deleteAll") {
-                    axios.post('/admin/doDelete', {
+                    axios.post('./employee/delete', {
                         name: filterFormApp.name,
                         job: filterFormApp.job,
                         sal: filterFormApp.sal,
                         comm: filterFormApp.comm,
-                        hiredate: filterFormApp.hiredateStr,
+                        hiredateStr: filterFormApp.hiredateStr,
                         mgr: filterFormApp.mgr,
                         dept: filterFormApp.dept
                     }).then(function() {
@@ -120,8 +120,7 @@
                         console.info(error);
                     });
                 } else {
-                    // todo: url修改
-                    axios.get('/admin/doDelete?id=' + this.curBTN)
+                    axios.get('./employee/delete?id=' + this.curBTN)
                         .then(function() {
                             window.location.reload();
                         }).catch(function(error) {

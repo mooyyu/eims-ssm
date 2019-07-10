@@ -26,6 +26,16 @@ public class Employee {
         this.mgr = mgr;
         this.deptno = deptno;
     }
+    public Employee(int id, String name, String job, String hiredateStr, int sal, double comm, int mgr, int deptno) {
+        this.id = id;
+        this.name = name;
+        this.job = job;
+        this.sal = sal;
+        this.comm = comm;
+        this.mgr = mgr;
+        this.deptno = deptno;
+        this.hiredateStr = hiredateStr;
+    }
 
     public int getRownum() {
         return rownum;

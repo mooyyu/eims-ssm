@@ -17,14 +17,18 @@
         <result property="mgr" column="mgr"/>
         <result property="mgrName" column="mgrName"/>
     </resultMap>
-    <insert id="addEmployee" parameterType="Employee">
+    <insert id="addEmployee" parameterType="pojo.Employee">
         insert into employee(name ,job, hiredate, sal, comm, mgr, deptno)
         values(
           #{name}, #{job}, #{hiredateStr}, #{sal}, #{comm}, #{mgr}, #{deptno}
         )
     </insert>
 
-    <update id="updateEmployee"></update>
+    <update id="updateEmployee" parameterType="pojo.Employee">
+        update employee
+        set name=#{name}, job=#{job}, hiredate=#{hiredateStr}, sal=#{sal}, comm=#{comm}, mgr=#{mgr}, deptno=#{deptno}
+        where id=#{id}
+    </update>
 
     <update id="updateAvatar">
         update employee
@@ -32,8 +36,15 @@
         where id=${id}
     </update>
 
-    <delete id="deleteEmployee"></delete>
-    <delete id="deleteAllQuery"></delete>
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee
+        where id=#{id}
+    </delete>
+
+    <delete id="deleteAllQuery" parameterType="string">
+        delete from employee
+        where ${gcs}
+    </delete>
 
     <select id="queryEmployee" resultType="pojo.Employee" parameterType="string">
         select @rownum:=@rownum+1 as rownum, x.*

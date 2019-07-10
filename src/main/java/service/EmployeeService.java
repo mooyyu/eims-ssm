@@ -1,6 +1,6 @@
 package service;
 
-import pojo.Employee;
+import pojo.CurQuery;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,13 +15,11 @@ public interface EmployeeService {
 
     int getMaxId();
 
-    int updateEmployee(Employee e);
+    void updateEmployee(HttpServletRequest request);
 
     void updateAvatar(String avatar, int id);
 
-    String getAvatar(int id);
-
     void deleteEmployee(int id);
 
-    void deleteAllQuery(String gcs);
+    void deleteAllQuery(CurQuery cq);
 }
