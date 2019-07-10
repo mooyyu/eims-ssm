@@ -1,9 +1,9 @@
 package utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import service.SuperuserService;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 对于Cookie的操作池
  */
-@WebServlet(name = "CookieUtil")
+@Component
 public class CookieUtil extends HttpServlet {
     @Autowired
     private SuperuserService superuserService;
@@ -33,23 +33,6 @@ public class CookieUtil extends HttpServlet {
             }
         }
         return null;
-    }
-
-    /**
-     * 通过cookie中保存的邮件地址和加密密码和userId验证用户是否已经登录。
-     * @param request
-     * @return
-     */
-    public boolean checkLogined(HttpServletRequest request) {
-        String name = getValueByKey(request, "name");
-        String password = getValueByKey(request, "password");
-
-        if (name != null && password != null) {
-            if (superuserService.checkLogin(name, new Md5().createMD5(password))) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

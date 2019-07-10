@@ -14,7 +14,6 @@ import utils.Md5;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
@@ -58,7 +57,7 @@ public class LoginController extends HttpServlet {
 
     @RequestMapping(value = "/checkLogin", method = {RequestMethod.POST})
     @ResponseBody
-    public String checkLogin(@RequestBody LoginBody loginBody, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String checkLogin(@RequestBody LoginBody loginBody, HttpServletRequest request, HttpServletResponse response) {
         if (loginBody.name != null && loginBody.password != null && loginBody.vcode != null) {
             if (loginBody.vcode.equals(request.getSession().getAttribute("vcode"))) {
                 if (superuserService.checkLogin(loginBody.name, new Md5().createMD5(loginBody.password))) {
@@ -67,13 +66,13 @@ public class LoginController extends HttpServlet {
                     cookieUtil.addCookie(response, "password", loginBody.password, -1);
                     return "yes";
                 } else {
-                    return "用户名或密码错误!";
+                    return "name or password error!";
                 }
             } else {
-                return "验证码错误!";
+                return "vcode error!";
             }
         } else {
-            return "请将信息填写完整!";
+            return "please complete the info!";
         }
     }
 
