@@ -12,11 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 对于Cookie的操作池
  */
-@Component
 public class CookieUtil extends HttpServlet {
-    @Autowired
-    private SuperuserService superuserService;
-
     /**
      * 通过key返回cookie的value
      * @param request
